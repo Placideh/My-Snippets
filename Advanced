@@ -1,0 +1,59 @@
+								Advanced Way of Using Tenary Operator 
+								====================================
+
+
+This is all about when you get the experience in coding sometimes you don't really need to write many bunch of code that looks  pretty ugly so that why I have learned the simplest way of writing my code with just using Advanced way so this is 
+the thing that  I have learned as long I continue coding every single day and I do love simplicity in code but this is the 
+thing that I started getting to understand during the end of fourth month of hardCore in programming and I am starting to 
+the great thing about coding everyday so what I want to talk about is that there was many ways to implement thins in programming so that way differentiate beginner to an advanced learner and it also kind hide your codes to unexperienced 
+learner so that they can not get to understand your codes until you have to explain to them so it kind feels like mastery to 
+me that I have understood the core java concept so that I am able to take things on the next level for now I am going to elicit all those tricks that I have found that are associates with using TERNARY CONDITION OPERATOR
+
+						TERNATY CONDITION OPERATOR 
+						==========================
+	This condition operator what it does it simplify the use of if and else statements for really nothing 
+	if we know what will be the output so we don't need to write codes like this 
+	int a=20;
+	int b=30;
+		if(a==b){
+		System.out.println("they are equal");
+		}else{
+		System.out.println("they are not equal");
+		}
+
+
+		INSTEAD WE COULD WRITE ALL OF THOSE CODES WITHIN A SINGLE LINE
+		String output= a==b? "They are Equal":"They are not Equal";
+		so now you can see the great about using ternary over the if statement so where to use the tenary is when 
+		we have one condition or if we may want to use the same function.
+
+
+	Second way that we use Tenary condition for simplicity is when we nest if inside anothe if statement and 
+	that sometime looks pretty ugly and we don't want that to happen and that also may take up a lot line and 
+	we want that our codes be clean and short
+
+	if(a==b ){
+		if(b>=20){
+		System.out.println("Hello World");
+		}
+		else{
+		System.out.println("Failed");
+		}
+	}
+	for simplicity we can also write this codes like this
+	if(a==b&& b>=20){
+	System.out.println("Hello World");
+	}else{
+		System.out.println("Failed");
+	}
+
+	ADVANCED WAY OF USING TERNARY
+		String z=x==y && x>=20? "Hello World" :"Failed";
+		System.out.println(z);
+
+	NOW YOU CAN SEE THAT SIMPLIFY ALL THOSE CODES SO THAT HOW POWERFUL IS STRONG IN USE AND WE DON'T NEED THOSE BUNCH OF LINES AND EVEN USING MORE CURLY UGLY BRACES SO THAT THE COOL ABOUT USING TENARY OPERATOR SO THAT'S THE WAY I WILL BE
+	USING IN COMING PROJECTS BECAUSE I HAVE LEARN MANY MORE THAT COULD TAKE MY SKILLS TO ANOTHER LEVEL ONLY MY CODES SHOULD 
+	BE READY BY SOMEONE WHO IS AND ADVANCED CODER OR BEING ABLE TO BE VISIBLE TO SOMEONE IF ONLY I HAVE EXPLAINED TO THEM 
+	BUT EVEN THOUGH PEOPLE ARE AFRAID OF USING TENARY BUT IT IS THE NUMBER ONE SIMPLE AND EASIER WAY TO WRITE YOUR IF AND ELSE CONDITIONS AND WAY IT IS MORE READABLE SO FROM NOW I HAVE TOSAY THAT I AM ON A GREAT LEVEL IN PROGRAMMING BECAUSE 
+	I HAVE KNOWN HOW TO USE WELL THE FUNDAMENTALS CONCEPT AND I STILL NEED TO GET MASTERING THE BASIC LIKE OOPS AND ITS 
+	COLLECTIONS AND GENERICS THIS IS THE THINGS THAT MOST OF MY COLLEGUES WILL STRUGGLING TO KNOW ONCE I WILL BE ALREADY KNOW THEM SO I WILL BE ABLE TO TEACH THEM IN A VERY SIMPLER WAY

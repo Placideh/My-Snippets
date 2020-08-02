@@ -1,0 +1,689 @@
+									DATABASE SNIPPETS
+									=================
+
+		1.Creating a DATABASE USER and login
+		->mysql -u root -p "password"
+		->CREATE USER 'usernam'@'localhost'IDENTIFIED BY 'password';
+
+		2.to show users who are exist in the database;
+		-> SELECT user,host FROM mysql.user;
+
+		3.giving privileges to the created user
+		->GRANT ALL PRIVILEGES ON *.* TO 'placide'@'localhost';
+		after that we have to flush them 
+		->FLUSH PRIVILEGES;
+		
+		4.check priviges of that user 
+		->SHOW GRANTS FOR 'placide'@'localhost';
+
+		5.creating a database
+		->CREATE DATABASE plc;
+
+		6.show databases;
+		->SHOW DATABASES;
+
+		7.use a given database which is on the list 
+		->USE nameof databases;
+
+		8.show tables;
+		->SHOW TABLES;
+		9.Creating tables 
+		-> CREATE TABLE tablename(
+				->id INT AUTO_INCREMENT,
+				->first_name VARCHAR(100),
+				->last_name VARCHAR(100),
+				->email VARCHAR(75),
+				->password VARCHAR(255),
+				->dept VARCHAR(75),
+				->location VARCHAR(100),
+				->is_admin TINYINT(1),
+				->register_date DATETIME,
+				->PRIMARY KEY(id)
+				);
+		10.to delete the tables 
+		->DROP TABLE tablename;
+		11.to delete the database;
+		->DROP DATABASE databasename;
+
+
+
+
+			
+
+
+
+					DATATYPES
+					=========
+					*Numeric  	INT ,TINYINT,BIGINT,FLOAT
+					*String 	VARCHAR,TEXT,CHAR
+					*Dates 		DATE , DATETIME,TIMESTAMP
+					*Others 	BINARY,JSON
+
+		
+				WORKING WITH DATABASES COMMANDS
+				===============================
+		1.SELECT * FROM tablename ;
+			>> this will list all information that is int the table 
+
+		2.INSERT INTO plc(first_name,last_name,email,password,dept,location,is_admin,register_date)VALUES('Placide','Hakizimana','h.uwizeyeplacide@gmail.com','12345','Coding','Nyakabanda',1,now());
+
+		--it is also to insert multiple records at the same time like this.
+
+		mysql> INSERT INTO plc (first_name,last_name ,email,password,location,dept,is_admin,register_date) values('john','Doe','john@gmail.com','123456','Massachussets','development',1,now()),('Fred','Smith','fred@gmail.com','123456','New York','design',0,now()),('Sara','Watson','sara@gmail.com','123456','design',0,now()),('Will','Jackson','will@gmail.com','123456','Rhode Island','development',1,now()),('Paula','Johnson','paula@yahoo.com','123456','Massachussets','sales',0,now()),('Tom','Spears','tom@yahoo.com','123456','Massachussets','sales',0,now());
+		
+
+		-- but it more tiring may be there is a great way of inserting them.
+
+		3.SELECT first_name,last_name FROM plc;
+		>> here it is when we do want to select a certain fields.
+
+		4.WHERE CLAUSE
+		>>SELECT * FROM plc WHERE location='Massachussets';
+		+----+------------+-----------+-----------------+----------+-------------+---------------+----------+---------------------+
+		| id | first_name | last_name | email           | password | dept        | location      | is_admin | register_date       |
+		+----+------------+-----------+-----------------+----------+-------------+---------------+----------+---------------------+
+		|  1 | john       | Doe       | john@gmail.com  | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |
+		|  5 | Paula      | Johnson   | paula@yahoo.com | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |
+		|  6 | Tom        | Spears    | tom@yahoo.com   | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |
+		+----+------------+-----------+-----------------+----------+-------------+---------------+----------+---------------------+
+		3 rows in set (0.00 sec)
+		>>mysql> SELECT * FROM plc WHERE location='Massachussets' AND dept='sales';
+		+----+------------+-----------+-----------------+----------+-------+---------------+----------+---------------------+
+		| id | first_name | last_name | email           | password | dept  | location      | is_admin | register_date       |
+		+----+------------+-----------+-----------------+----------+-------+---------------+----------+---------------------+
+		|  5 | Paula      | Johnson   | paula@yahoo.com | 123456   | sales | Massachussets |        0 | 2020-07-11 03:41:08 |
+		|  6 | Tom        | Spears    | tom@yahoo.com   | 123456   | sales | Massachussets |        0 | 2020-07-11 03:41:08 |
+		+----+------------+-----------+-----------------+----------+-------+---------------+----------+---------------------+
+		2 rows in set (0.00 sec)
+
+		mysql> SELECT * FROM plc WHERE is_admin > 0;
+		+----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+
+		| id | first_name | last_name | email          | password | dept        | location      | is_admin | register_date       |
+		+----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+
+		|  1 | john       | Doe       | john@gmail.com | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |
+		|  4 | Will       | Jackson   | will@gmail.com | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |
+		+----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+
+		2 rows in set (0.00 sec)
+
+		5.DELETE COMMAND
+		>>Here it is more important  that if you do want to delete or update it has to go with the 
+			WHERE  clause. IF NOT you can end up deleting all your records.for deleting most of the time you probably going to be 
+			using primary key field like ID.
+		>>mysql> DELETE FROM plc WHERE id=6;
+		Query OK, 1 row affected (0.16 sec)
+		>> mysql> SELECT * FROM plc;
+		+----+------------+-----------+-----------------+----------+-------------+---------------+----------+---------------------+
+		| id | first_name | last_name | email           | password | dept        | location      | is_admin | register_date       |
+		+----+------------+-----------+-----------------+----------+-------------+---------------+----------+---------------------+
+		|  1 | john       | Doe       | john@gmail.com  | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |
+		|  2 | Fred       | Smith     | fred@gmail.com  | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |
+		|  3 | Sara       | Watson    | sara@gmail.com  | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |
+		|  4 | Will       | Jackson   | will@gmail.com  | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |
+		|  5 | Paula      | Johnson   | paula@yahoo.com | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |
+		+----+------------+-----------+-----------------+----------+-------------+---------------+----------+---------------------+
+		5 rows in set (0.00 sec)
+
+		6.UPDATE COMMAND
+		>> UPDATE tablename SET fieldyouwantToUpdate WHERE id=2;
+
+		>>mysql> UPDATE plc SET email='freddy@gmail.com' WHERE id=2;
+		Query OK, 1 row affected (0.13 sec)
+		Rows matched: 1  Changed: 1  Warnings: 0
+
+		mysql> SELECT * FROM plc;
+		+----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+
+		| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       |
+		+----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+
+		|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |
+		|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |
+		|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |
+		|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |
+		|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |
+		+----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+
+		5 rows in set (0.00 sec) 
+		we have to  mention the WHERE CLAUSE otherwise all email are going to setted to freddy.
+
+		7.ALTER COMMAND
+		>> This is also used when we want to add like another column inside the table created.
+		>> we also want to delete a given column.
+
+		>>mysql> ALTER TABLE plc ADD age VARCHAR(3);
+Query OK, 0 rows affected (0.76 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM plc;
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 | NULL |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 | NULL |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 | NULL |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 | NULL |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 | NULL |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+5 rows in set (0.00 sec)
+
+Notice: that Our columns has added even though it is empty is that we did not add into it anything.
+
+		>> TO UPDATE BY PUTTING VALUES THE HARD WAY THAT I DID
+
+mysql> UPDATE plc SET age='20' WHERE id =1;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE plc SET age='23' WHERE id =2;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE plc SET age='19' WHERE id =3;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE plc SET age='22' WHERE id =4;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE plc SET age='21' WHERE id =5;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM plc;
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 | 20   |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 | 23   |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 | 19   |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 | 22   |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 | 21   |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+5 rows in set (0.00 sec)
+
+
+		TO DELETE WHEN YOU UPDATE ALL FIELDS HARD WAY I DID IS
+			mysql> DELETE FROM plc WHERE id=9;
+			Query OK, 1 row affected (0.17 sec)
+
+			mysql> DELETE FROM plc WHERE id=8;
+			Query OK, 1 row affected (0.25 sec)
+
+			mysql> DELETE FROM plc WHERE id=10;
+			Query OK, 1 row affected (0.17 sec)
+
+			mysql> DELETE FROM plc WHERE id=11;
+			Query OK, 1 row affected (0.09 sec)
+
+
+	8.MODIFY COMMANDS
+	>> THIS is used when we do want to modify a certain column. 
+
+mysql> ALTER TABLE  plc MODIFY COLUMN age INT(3);
+Query OK, 5 rows affected, 1 warning (3.04 sec)
+Records: 5  Duplicates: 0  Warnings: 1
+mysql>ALTER TABLE plc DROP COLUMN age
+here to delete a given Column
+
+mysql> SELECT * FROM plc;
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   19 |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+5 rows in set (0.05 sec)
+
+
+TO RENAME A COLUMN
+ALTER TABLE plc RENAME COLUMN user_name TO username;
+
+
+	ORDER BY COMMAND
+	>>HERE may select accordingly to the columns and sometimes we might want to order by ASCENDING OR DESCENDING
+
+mysql> SELECT * FROM plc ORDER BY last_name ASC;
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   19 |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+5 rows in set (0.02 sec)
+
+mysql> SELECT * FROM plc ORDER BY last_name DESC;
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   19 |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+5 rows in set (0.00 sec)
+
+
+
+	9.CONCAT COMMAND
+	>> This helps to CONCATENATE COLUMNS;
+
+
+		mysql> SELECT CONCAT (first_name ,' ',last_name) AS 'Name', dept FROM plc;
+		+---------------+-------------+
+		| Name          | dept        |
+		+---------------+-------------+
+		| john Doe      | development |
+		| Fred Smith    | design      |
+		| Sara Watson   | design      |
+		| Will Jackson  | development |
+		| Paula Johnson | sales       |
+		+---------------+-------------+
+		5 rows in set (0.04 sec)
+
+		The AS clause Keyword Helps to have to name our concatenation columns and notice that even though we concatenate we may also
+		be able to select other colums.like how we did on dept column.
+
+
+
+
+	10.DISTINCT COMMAND
+		>> this help to  remove the duplication in case we only need one field that is related to what we want.	
+
+		mysql> SELECT DISTINCT location FROM plc;
+		+---------------+
+		| location      |
+		+---------------+
+		| Massachussets |
+		| New York      |
+		| Rhode Island  |
+		+---------------+
+		3 rows in set (0.03 sec)
+		THIS IS WHEN WE WANT TO GET LOCATION BUT NO REPEATING.
+
+
+	11. BETWEEN COMMAND(RANGES).
+
+mysql> SELECT * FROM  plc WHERE age BETWEEN 20 AND 23;
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales       | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+4 rows in set (0.00 sec)
+
+
+	12.LIKE COMMAND OR CLAUSE
+	>>This clause is mostly used for search for instance if you want to search for a specific blog or you want to searc a word
+mysql> SELECT * FROM plc WHERE dept LIKE 'd%';
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com   | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design      | New York      |        0 | 2020-07-11 03:41:08 |   19 |
+|  4 | Will       | Jackson   | will@gmail.com   | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
++----+------------+-----------+------------------+----------+-------------+---------------+----------+---------------------+------+
+4 rows in set (0.00 sec)
+
+
+	THat 'd%' >> it will retrieve only dept that start with 'd'.
+
+mysql> SELECT * FROM plc WHERE dept LIKE 'dev%';
++----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email          | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
+|  4 | Will       | Jackson   | will@gmail.com | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
++----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+------+
+2 rows in set (0.00 sec)
+			
+			this what it does is that now we are searching words that starts with 'dev'
+
+
+
+mysql> SELECT * FROM plc WHERE dept LIKE '%s';
++----+------------+-----------+-----------------+----------+-------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email           | password | dept  | location      | is_admin | register_date       | age  |
++----+------------+-----------+-----------------+----------+-------+---------------+----------+---------------------+------+
+|  5 | Paula      | Johnson   | paula@yahoo.com | 123456   | sales | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
++----+------------+-----------+-----------------+----------+-------+---------------+----------+---------------------+------+
+1 row in set (0.00 sec)
+
+
+	NOTICE THAT HERE THE MODULO SIGN IS ON START MEANS WE ARE SEARCHIN FOR THE VALUE THAT ENDS WIHT 's'.
+
+
+mysql> SELECT * FROM plc WHERE dept LIKE '%s%';
++----+------------+-----------+------------------+----------+--------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept   | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+--------+---------------+----------+---------------------+------+
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design | New York      |        0 | 2020-07-11 03:41:08 |   19 |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales  | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
++----+------------+-----------+------------------+----------+--------+---------------+----------+---------------------+------+
+3 rows in set (0.00 sec)
+
+
+	NOTICE THAT NOW WE ARE HAVING TO MODULO SIGNS WHICH MEANS WE MAY BE LOOKING TO ANYTHING THAT PROBABLY HAS THAT LETTER 's'
+
+mysql> SELECT * FROM plc WHERE dept NOT LIKE '%s%';
++----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email          | password | dept        | location      | is_admin | register_date       | age  |
++----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+------+
+|  1 | john       | Doe       | john@gmail.com | 123456   | development | Massachussets |        1 | 2020-07-11 03:41:08 |   20 |
+|  4 | Will       | Jackson   | will@gmail.com | 123456   | development | Rhode Island  |        1 | 2020-07-11 03:41:08 |   22 |
++----+------------+-----------+----------------+----------+-------------+---------------+----------+---------------------+------+
+2 rows in set (0.00 sec)
+				
+				THIS IS THE NEGATION OF THE ABOVE ONE NOT LIKE
+
+
+
+
+	13.IN CLAUSE 
+mysql> SELECT * FROM plc WHERE dept IN('design','sales');
++----+------------+-----------+------------------+----------+--------+---------------+----------+---------------------+------+
+| id | first_name | last_name | email            | password | dept   | location      | is_admin | register_date       | age  |
++----+------------+-----------+------------------+----------+--------+---------------+----------+---------------------+------+
+|  2 | Fred       | Smith     | freddy@gmail.com | 123456   | design | New York      |        0 | 2020-07-11 03:41:08 |   23 |
+|  3 | Sara       | Watson    | sara@gmail.com   | 123456   | design | New York      |        0 | 2020-07-11 03:41:08 |   19 |
+|  5 | Paula      | Johnson   | paula@yahoo.com  | 123456   | sales  | Massachussets |        0 | 2020-07-11 03:41:08 |   21 |
++----+------------+-----------+------------------+----------+--------+---------------+----------+---------------------+------+
+3 rows in set (0.02 sec)
+
+	this IN clause helps us more about on how we can be able to manipulate like many field at  the time without having to use 
+	the AND clause. so that is the great thing about IN CLAUSE.
+
+
+
+					INDEX 
+					====
+	They are used on columns and tables to speed up querries and find things more quickly and efficient , so with that 
+	we can almost think of them as Index in a book. Primary Key and Foreign Key are Index but we can add custom indexes to
+	other fields as well. so we put index on the field that we will be searching by alot 
+
+	for example we have like an application to where we will be searching using location as index could be way easier to that.
+	  mysql> CREATE INDEX LIndex on plc (location);
+	  Query OK, 0 rows affected (1.58 sec)
+	  Records: 0  Duplicates: 0  Warnings: 0
+
+	  TO REMOVE INDEX
+	  ===============
+	  mysql> DROP INDEX LIndex ON plc;
+	  Query OK, 0 rows affected (0.46 sec)
+	  Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+	  FOREIGN KEYS AND RELATIONSHIPS BETWEEN TABLES
+	  =============================================	
+ mysql> CREATE TABLE posts(
+     -> id INT AUTO_INCREMENT,
+     -> user_id INT,
+     -> title VARCHAR(200),
+     -> body TEXT,
+     -> publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+     -> PRIMARY KEY(id),
+     -> FOREIGN KEY(user_id) REFERENCES plc(id)
+     -> );
+ Query OK, 0 rows affected (1.34 sec)
+
+ INSERTING ELEMENTS INTO Posts
+ =============================
+  INSERT INTO plc(first_name,last_name,email,password,dept,location,is_admin,register_date,age)VALUES('Placide','Hakiz','h.uwizeye@gmail.com','1233456','development','Nevada',1,now(),20),('Lily','Haye','hayelily@gmail.com','12345','sales','Paris',0,now(),22),('Gogo','Mutesi','gogomutesi@gmail.com','12345','design','Quebec',0,now(),17),('Amado','Buntu','amadobuntu@gmail.com','12345','development','Virginia',1,now(),3),('Higo','Prince','higoprince@gmail.com','12345','sales','Mont Real',0,now(),5);
+ Query OK, 5 rows affected (0.23 sec)
+ Records: 5  Duplicates: 0  Warnings: 0
+
+ mysql> SELECT * FROM posts;
+ +----+---------+------------+--------------------+---------------------+
+ | id | user_id | title      | body               | publish_date        |
+ +----+---------+------------+--------------------+---------------------+
+ | 21 |       1 | Post One   | This is Post One   | 2020-07-15 04:40:38 |
+ | 22 |       2 | Post Two   | This is Post Two   | 2020-07-15 04:40:38 |
+ | 23 |       3 | Post Three | This is Post Three | 2020-07-15 04:40:38 |
+ | 24 |       4 | Post Four  | This is Post Four  | 2020-07-15 04:40:38 |
+ | 25 |       5 | Post Five  | This is Post Five  | 2020-07-15 04:40:38 |
+ | 26 |      12 | Post Six   | This is Post Six   | 2020-07-15 04:40:38 |
+ | 27 |      13 | Post Seven | This is Post Seven | 2020-07-15 04:40:38 |
+ | 28 |      14 | Post Eight | This is Post Eight | 2020-07-15 04:40:38 |
+ | 29 |      15 | Post Nine  | This is Post Nine  | 2020-07-15 04:40:38 |
+ | 30 |      16 | Post Ten   | This is Post Ten   | 2020-07-15 04:40:38 |
+ +----+---------+------------+--------------------+---------------------+
+ 10 rows in set (0.00 sec)
+
+
+ by  Inserting the elements of the foreing key you have to type well the foreign key Primary key value others wise it will not get inserted into that new Table.
+
+
+ 				JOINS
+ 				====
+ 				we have 
+ 				Inner Join-> this will return rows when there is matching in both tables.
+ 				Left Join-> this will return all rows from the left table. even if there is not match in the right table
+ 				Right Join-> this will return all rows from the right table.even if there is not match in the right table.
+
+
+ 				mysql> SELECT
+ 				    -> plc.first_name,
+ 				    -> plc.last_name,
+ 				    -> posts.title,
+ 				    -> posts.publish_date
+ 				    -> FROM plc
+ 				    -> INNER JOIN posts
+ 				    -> ON plc.id= posts.user_id
+ 				    -> ORDER BY posts.title;
+ 				+------------+-----------+------------+---------------------+
+ 				| first_name | last_name | title      | publish_date        |
+ 				+------------+-----------+------------+---------------------+
+ 				| Gogo       | Mutesi    | Post Eight | 2020-07-15 04:40:38 |
+ 				| Paula      | Johnson   | Post Five  | 2020-07-15 04:40:38 |
+ 				| Will       | Jackson   | Post Four  | 2020-07-15 04:40:38 |
+ 				| Amado      | Buntu     | Post Nine  | 2020-07-15 04:40:38 |
+ 				| john       | Doe       | Post One   | 2020-07-15 04:40:38 |
+ 				| Lily       | Haye      | Post Seven | 2020-07-15 04:40:38 |
+ 				| Placide    | Hakiz     | Post Six   | 2020-07-15 04:40:38 |
+ 				| Higo       | Prince    | Post Ten   | 2020-07-15 04:40:38 |
+ 				| Sara       | Watson    | Post Three | 2020-07-15 04:40:38 |
+ 				| Fred       | Smith     | Post Two   | 2020-07-15 04:40:38 |
+ 				+------------+-----------+------------+---------------------+
+ 				10 rows in set (0.00 sec)
+
+
+ 						CREATING ANOTHER TABLE FOR COMMENTS
+ 						====================================
+
+ 				mysql> CREATE TABLE comments(
+ 				    -> id INT AUTO_INCREMENT,
+ 				    -> post_id INT ,
+ 				    -> user_id INT ,
+ 				    -> body TEXT,
+ 				    -> publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+ 				    -> PRIMARY KEY(id)
+ 				    -> ,
+ 				    -> FOREIGN KEY(post_id) REFERENCES posts(id),
+ 				    -> FOREIGN KEY(user_id) REFERENCES plc(id)
+ 				    -> );
+ 				Query OK, 0 rows affected (2.16 sec)
+
+
+ 				INSERTING ELEMENTS IN THE TABLE
+ 				=============================
+
+ 				mysql> INSERT INTO comments(post_id,user_id,body)VALUES(21,1,'This is comment one'),(22,2,'This is comment two'),(23,3,'This is comment three'),(24,4,'This is comment four'),(25,5,'This is comment five'),(26,12,'This is comment six'),(27,13,'This is comment seven'),(28,14,'This is comment eight'),(29,15,'This is comment nine'),(30,16,'This is comment ten');
+ 				Query OK, 10 rows affected (0.30 sec)
+ 				Records: 10  Duplicates: 0  Warnings: 0
+
+ 				mysql> SELECT * FROM comments;
+ 				+----+---------+---------+-----------------------+---------------------+
+ 				| id | post_id | user_id | body                  | publish_date        |
+ 				+----+---------+---------+-----------------------+---------------------+
+ 				|  1 |      21 |       1 | This is comment one   | 2020-07-15 05:09:11 |
+ 				|  2 |      22 |       2 | This is comment two   | 2020-07-15 05:09:11 |
+ 				|  3 |      23 |       3 | This is comment three | 2020-07-15 05:09:11 |
+ 				|  4 |      24 |       4 | This is comment four  | 2020-07-15 05:09:11 |
+ 				|  5 |      25 |       5 | This is comment five  | 2020-07-15 05:09:11 |
+ 				|  6 |      26 |      12 | This is comment six   | 2020-07-15 05:09:11 |
+ 				|  7 |      27 |      13 | This is comment seven | 2020-07-15 05:09:11 |
+ 				|  8 |      28 |      14 | This is comment eight | 2020-07-15 05:09:11 |
+ 				|  9 |      29 |      15 | This is comment nine  | 2020-07-15 05:09:11 |
+ 				| 10 |      30 |      16 | This is comment ten   | 2020-07-15 05:09:11 |
+ 				+----+---------+---------+-----------------------+---------------------+
+ 				10 rows in set (0.00 sec)
+
+
+ 					LEFT JOIN
+ 					=========
+ 				mysql> SELECT
+ 				    -> comments.body,
+ 				    -> posts.title
+ 				    -> FROM comments
+ 				    -> LEFT JOIN  posts ON  posts.id=comments.post_id
+ 				    -> ORDER BY posts.title;
+ 				+-----------------------+------------+
+ 				| body                  | title      |
+ 				+-----------------------+------------+
+ 				| This is comment eight | Post Eight |
+ 				| This is comment five  | Post Five  |
+ 				| This is comment four  | Post Four  |
+ 				| This is comment nine  | Post Nine  |
+ 				| This is comment one   | Post One   |
+ 				| This is comment seven | Post Seven |
+ 				| This is comment six   | Post Six   |
+ 				| This is comment ten   | Post Ten   |
+ 				| This is comment three | Post Three |
+ 				| This is comment two   | Post Two   |
+ 				+-----------------------+------------+
+ 				10 rows in set (0.00 sec)
+
+
+ 						JOINING MULTIPLE TABLES
+ 						=======================
+ 						mysql> SELECT
+ 						    -> comments.body,
+ 						    -> posts.title,
+ 						    -> plc.first_name,
+ 						    -> plc.last_name
+ 						    -> FROM comments
+ 						    -> INNER JOIN  posts ON  posts.id=comments.post_id
+ 						    -> INNER JOIN  plc ON  plc.id=comments.user_id
+ 						    -> ORDER BY posts.title;
+ 						+-----------------------+------------+------------+-----------+
+ 						| body                  | title      | first_name | last_name |
+ 						+-----------------------+------------+------------+-----------+
+ 						| This is comment eight | Post Eight | Gogo       | Mutesi    |
+ 						| This is comment five  | Post Five  | Paula      | Johnson   |
+ 						| This is comment four  | Post Four  | Will       | Jackson   |
+ 						| This is comment nine  | Post Nine  | Amado      | Buntu     |
+ 						| This is comment one   | Post One   | john       | Doe       |
+ 						| This is comment seven | Post Seven | Lily       | Haye      |
+ 						| This is comment six   | Post Six   | Placide    | Hakiz     |
+ 						| This is comment ten   | Post Ten   | Higo       | Prince    |
+ 						| This is comment three | Post Three | Sara       | Watson    |
+ 						| This is comment two   | Post Two   | Fred       | Smith     |
+ 						+-----------------------+------------+------------+-----------+
+ 						10 rows in set (0.00 sec)
+
+
+ 								AGGREGATE FUNCTION
+ 								==================
+ 									COUNT
+ 									-----
+ 								mysql> SELECT COUNT(id)  FROM plc;
+ 								+-----------+
+ 								| COUNT(id) |
+ 								+-----------+
+ 								|        10 |
+ 								+-----------+
+ 								1 row in set (0.02 sec)
+
+ 								this helps to count how many id or users we have.
+
+ 								mysql> SELECT COUNT(id) FROM posts;
+ 								+-----------+
+ 								| COUNT(id) |
+ 								+-----------+
+ 								|        10 |
+ 								+-----------+
+ 								1 row in set (0.01 sec)
+
+ 									MAX
+ 									----
+ 								mysql> SELECT MAX(age) FROM  plc;
+ 								+----------+
+ 								| MAX(age) |
+ 								+----------+
+ 								|       23 |
+ 								+----------+
+ 									MIN
+								---
+								mysql> SELECT MIN(age) FROM  plc;
+								+----------+
+								| MIN(age) |
+								+----------+
+								|        3 |
+								+----------+
+								1 row in set (0.00 sec)
+ 									SUM
+ 									----
+
+ 								mysql> SELECT SUM(age) FROM  plc;
+ 								+----------+
+ 								| SUM(age) |
+ 								+----------+
+ 								|      172 |
+ 								+----------+
+ 								1 row in set (0.00 sec)
+ 									Uppercase and Lower case
+ 									------------------------
+ 								mysql> SELECT  UCASE(first_name), LCASE (last_name) FROM plc;
+ 								+-------------------+-------------------+
+ 								| UCASE(first_name) | LCASE (last_name) |
+ 								+-------------------+-------------------+
+ 								| JOHN              | doe               |
+ 								| FRED              | smith             |
+ 								| SARA              | watson            |
+ 								| WILL              | jackson           |
+ 								| PAULA             | johnson           |
+ 								| PLACIDE           | hakiz             |
+ 								| LILY              | haye              |
+ 								| GOGO              | mutesi            |
+ 								| AMADO             | buntu             |
+ 								| HIGO              | prince            |
+ 								+-------------------+-------------------+
+
+
+ 									GROUP BY
+ 									---------
+ 								mysql> SELECT location, COUNT(location) FROM  plc GROUP BY location;
+ 								+---------------+-----------------+
+ 								| location      | COUNT(location) |
+ 								+---------------+-----------------+
+ 								| Massachussets |               2 |
+ 								| New York      |               2 |
+ 								| Rhode Island  |               1 |
+ 								| Nevada        |               1 |
+ 								| Paris         |               1 |
+ 								| Quebec        |               1 |
+ 								| Virginia      |               1 |
+ 								| Mont Real     |               1 |
+ 								+---------------+-----------------+
+ 								8 rows in set (0.00 sec)
+
+ 								this will print out The time location is repeatedly comming or how many users who are in the same location.
+ 								
+
+ 								mysql> SELECT location, COUNT(location) FROM  plc WHERE location='Massachussets' GROUP BY location;
+ 								+---------------+-----------------+
+ 								| location      | COUNT(location) |
+ 								+---------------+-----------------+
+ 								| Massachussets |               2 |
+ 								+---------------+-----------------+
+ 								1 row in set (0.00 sec)

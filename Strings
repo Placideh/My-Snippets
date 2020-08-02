@@ -1,0 +1,259 @@
+											Strings
+											=======
+Talking about The Strings is One of the most Commonly used int Programming so we are going to list Some of likely used most of the time.
+String is a collection of characters.
+
+Talking about String we have also Some looks like String and going to work like it but not those types are:STRINGBUFFER AND STRINGBUILDER which are said to be mutable whereas String are immutable which means they can not be changed once created or assign to another value;
+
+STRING:is used to create objects and provides a list of methods to create and manipulate Strings
+STRINGBUFFER:is a peer class of string that represents growable and writable  character sequences
+STRINGBUILDER:is identical to StringBuffer except for one important difference that it is not sysnchronized , which means it is not thread safe.
+
+
+this is the class that I am going to be using but in method I will simly type out only the method.and I will be giving each a related explanation.
+public class Test{
+	public static void main(String[] args) {
+		String name="Hakizimana";
+		
+	
+	}
+	
+	}
+				METHODS ASSOCIATES WITH STRINGS
+				------------------------------
+	1. name.length()=> this String will return the length of this string.
+	
+	2.name.contains("k")=. this method will return true or false if that given character includes in that String .
+
+	3.name.equals(name)=> this will compare two string if they are equal it will return a boolean value true/ false;
+
+	4.name.compareTo(name)=> this method works pretty much as equals the only difference is that this returns numeric instead of boolean
+		1.if this method returns 0 this means that all the Strings are equasl
+		2.if this method returns 1 this means that the first String is greater the second one in length what it does it checks if the one which has the lager length more than the other 
+		3. if this method returns -1 this means that the first string is not greater than the second String.
+
+	5.name.indexOf('a')=> this method will return the index of a passed character which is in the String .if not exist will return -1;
+
+	6.name.startsWith("H")=> this methods checks if an entered character is really starts the String if not then it will return false otherwise true
+
+	7.name.endsWith("i")=> this method returns true if a given passed character endsWith with that character if not it returns false
+
+	8.name.lastIndexOf('a')=> this method it checks the passed character if that character occurs more time it will return the last occasion index of that character.
+
+	9.name.toUpperCase()=> this method will convert the lower passed string to upper case.
+
+	10.name.toLowerCase()=> this method will conver the upper passed String into lowerCase
+
+	11.name.trim()=> this method it used most of the time so what it does is that it removes all white spaces before and after the string.
+
+	12.name.concat(namy)=> this method concatenate two String and comes As one String 
+	to to concatenate is to append one String to the other.
+
+	13.name.replace('a','$')=> this method replace a passed character to whatever other character that we do want to replace.
+
+	14.name.substring(1)=> this method can be used in many ways this one will cut the fist character of the string.
+		* namd.substring(0,1)=> this method will print only the first character so this means it is used in many different way it varies on how you want to express your code.
+
+	15.name.charAt(1)=> this will return a given character that  is at a specified index that passed int that method.
+	
+	16.name.equalsIgnoreCase(namy)=> this will compare to String if they are equal without focusing on the case whether upper or lowercase.
+
+	17.name.isEmpty()=> this helps to check a given reference variable is empty or not
+	so this will output a boolean value true or false.
+
+	18.name.toCharArray()=> convert a string to a new character array >>this method is very crucial to implement it we have first to create an array of character that is going to acquire that string .this means that each characters is separated from the other but keeps stored in that array 
+		here is how it is 
+				public class Test{
+					public static void main(String[] args) {
+						 String name="Hakizimana";
+						
+						char[] arr=name.toCharArray();
+						for (char k :arr ) {
+
+						System.out.print(k+" ");
+							
+						}
+					
+					}
+					
+					}
+
+	19.name.split()=> this method is also more helpful and it more advanced and the way it works is that we may be having a string that contains another words that are either separated by space or it is a sentence so when we want to output each word on its own that when we use split and notice that is the words are separated by comma, then inside the split method you have to mention it or if it is a space you have also to mention it. while you are using it. this means also we need an array of string .
+			HERE IS HOW IT LOOKS
+				*SPACES
+				public class Test{
+					public static void main(String[] args) {
+						 String name="Hakizimana Placide Uwizeye";
+						
+						 String[]arr=name.split(" ");
+						 for (String k :arr ) {
+						 	System.out.println(k);
+						 	
+						 }
+				}
+					
+					}
+
+				*COMMA
+				public class Test{
+					public static void main(String[] args) {
+						 String name="Hakizimana,Placide,Uwizeye";
+						
+						 String[]arr=name.split(" ");
+						 for (String k :arr ) {
+						 	System.out.println(k);
+						 	
+						 }
+				}
+					
+					}
+						OUTPUT
+						Hakizimana 
+						Placide
+						Uwizeye
+
+	20.simple program that uses for validation 
+			public class Test{
+				public static void main(String[] args) {
+					 /*DATA DURING REGISTRATION*/
+					 String email="h.placide@gmail.com";
+					 String phone="0789394104";
+					 String password="1345"
+					 /*VALIDATE DATA FORM USER*/
+					 if (!email.isEmpty()) {
+					 	System.out.println("email is available");
+
+					 		if (email.contains("@")&&email.contains(".")) {
+					 			System.out.println("that a valid email");
+					 			
+					 		}
+					 		else {
+					 			System.out.println("not a valid email");
+					 		}
+					 }else {
+					 	System.out.println("please provide an email");
+					 }
+					 if (!phone.isEmpty()) {
+					 	System.out.println("Phone number entered");
+					 	if (phone.length()!=10) {
+					 		System.out.println("Entered but it is invalid Phone number");
+					 		System.out.println("tyr Again though!:)");
+					 		
+					 	}else{
+					 		System.out.println("phone number registered");
+					 	}
+					 	
+					 }
+			}
+				
+				}
+
+
+	21.STRINGs are immutable which means can not be changed once created here is an example
+			public class Test{
+				public static void main(String[] args) {
+			String name="placide";
+					name.concat("world");
+			System.out.println(name);
+			}
+				
+				}
+				THE OUTPUT:
+				placide instead of placideworld.
+
+	22.STRINGBUFFER
+		the great thing about StringBuffer is that it can be changed they are mutable.
+				public class Test{
+					public static void main(String[] args) {
+						StringBuffer name=new StringBuffer("Placide");
+						name.append("Hakizimana");
+						System.out.println(name); 
+				}
+					
+					}
+					Output:
+					PlacideHakizimana
+					so this show that it is mutable.
+
+					*METHODS
+					1.append()>>it add String to the end of another string
+					2.insert(int offser, String)>>this method returns a String. this helps to insert a string at a specified index(position) into another string
+					3.delete(int startIndex,int endIndex)>> this methods returns a String but we passed into it int . it delete a characters from the specified index to another end index in a given String 
+					4. replace (int startIndex,int endIndex, String str). >>this methos takes 3 arguments  int,int ,string return String .>this replace a character  in a substring  of the sequence with characters in the specified String 
+					5.reverse()>>this method takes String argments and return a string 
+					>it is used to reverse a characters with  a StringBuffer object.
+					6.capacity()>>Argument :String ,Returntype:String
+					>this method return the current capacity of the buffer.
+					the default capacity of buffer is 16.
+					if the number of characters increases from its current capacity, it increases the capacity by (old capacity*2)+2.
+
+					for ex.if your current capacity is 16,it will be (16*2)+2=34;
+					7.setCharAt() >>ARGUMENTS:int RETURNTYPE:char;
+					>this method is used to replace a character with another character at specified index.
+					8.setLength()>>ARGUMENT:int RETURNTYPE:String
+					> this method is used to set the length of a stringBuffer variable  up to the specified range. if a string to stored has more than the specified length  ,then the character exceeding the length are truncated ,otherwise  stores NULL CHARACTER in an empty space
+
+
+	23.STRINGBUILDER
+		it also works  just like StringBuffer the only difference is that StringBuffer is thread safe whereas StringBuilder is not >> Thread safe means ==synchronize(which also mean that two events may happen at a same  time.
+				public class Test{
+					public static void main(String[] args) {
+						StringBuilder name=new StringBuilder("Placide");
+						name.append("Hakizimana");
+						System.out.println(name); 
+				}
+					
+					}
+					OUTPUT:
+					PlacideHakizimana
+
+	24.ALL OF  THESE 3 TYPES OF STRING REFERENCE TO  A CHARSEQUENCE
+	AND THIS CREATES A RUNTIME POLYMORPHISM
+			it means that all those 3 strings implements a class charSequence.
+			public class Test{
+				public static void main(String[] args) {
+			CharSequence ch= null;
+					ch =new String("hello");
+					ch=new StringBuilder("Hakizimana");
+					ch=new StringBuffer("world");
+					System.out.println(ch);
+			}
+				
+				}
+
+
+
+
+					COMPARISONG BETWEEN STRING AND STRINGBUFFER
+					===========================================
+
+
+															
+
+
+	BEHAVIOR	Strings represent  a sequence of characters
+				that cannot be changed i.estring are read only and 
+				imutable 
+
+				StringBuffer  is used to represent characters that can be
+				modified (mutable)
+
+	PERFORMANCE   String as compared to String Buffer are not faster 
+
+				stringBuffer is faster when perfoming concatenation.
+
+	LENGTH 		String  type objects have fixed  length
+
+				StringBuffer objects have the provision to change their length.
+
+	OBJECT CREATION  String  in order to save any changes made in a String  class, 
+					a new object is created every time
+
+					StringBuffer 	is mutable so changes can be reflected in the same object
+
+	APPROACH		String is a general approach  of programming
+
+					StringBuffer is the advanced approach of programming .
+
+
+

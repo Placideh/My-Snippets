@@ -1,0 +1,351 @@
+										Collection and Methods
+										----------------------
+	This Guide is Now Mine which I think that I could use as my reference Because I have seen others explanation and there is kind abstract or their techniqual terms that they have used seemed to be somehow obscure so now I am going to put out 
+	how I do think what it is Collection.
+
+	Collection Interface :it is an interface that has Some Classes and Interface in it. and collection Has a better way such that it is able to be used in way of kind using some built in classes and interfaces . this sound like I am confusing myself but I do know what it is .
+
+		so , Collection has Has its Interfaces and that interface has also classes that are implementing them ,those interfaces : List, Set,Queue
+
+		List: this interface has classes that are Implementing it . those classes are : ArrayList,LinkedList,Vector;
+
+		This classes They both has Methods that are in built with them and those methods is what we use when we are operating on a certaing problem.
+		Those methods are: 
+		-> add(): which will add an element inside the dataStructure
+		-> add(index, element): this also will be helpful in adding element at a specific index
+		->remove(): this method helps to remove a given index that is passed inside that method.
+		->size(): this method will check out the size of a given object that was created.
+		->contains(): this method will check out or search if a given item in the dataStructure exist
+		->get(): this method is commonly used it returns a certain element at a specific index.
+		->lastIndexOf():this will print out the occured
+		->indexOf(Object o)
+		->equals():this helps to search as well as help to remove if that element existed we may a remove method
+		->clear(): this will clear out every element in the dataStructure.
+		->set(index,element): this method is used to update a given element on a
+		a specified  index.
+
+		we do have also a built in class that is Iterator and it is used to iterate within the elements of an object that is created.
+		Iterator<E> iterator=iterator();
+		so it has a method called iterator and it is commonly used so that to iterate
+		this method has also its helping methods which are well in iterating 
+		those methods are
+		->next(): this one helps to iterate one single element . which means the more you write out the more it print out other elements . this simply prints single element
+		-> hasNext(): this one works like next() but it is like bigbro to next() because it helps to printout all the element in a way such that we don't have to print single by single like using next and to do that it also uses its littleBro next() function .
+		->remove(): this helps to remove a certain element in the dataStructure.
+
+		so that basically the most method that are used in java Collection and I will be adding how they works down here so that  to keep them as the reference. programming is about practice and keep practicing so the more you practice the more things get easier every single day. so I am speaking this from the experience for now for me to know the concept it  not taking me much effort because there is a level no on I can say that I am so this was from practice and dedicated.
+
+
+		In using This collection Class they are existed in java util class and others are existe in java lang package which gives also a way to learn how to use the importing so this API are more crucial like for me who doesn't have an IDE that should import all the stuff up I have to know all of the import that I want to be using and that will also 
+		give me the experience to know well those commonly import that are usefull instead of always importing. so I will be putting out all the import that I have to use .
+
+
+
+
+		collection has also its method that is associated with it so the moment we want to use them we got to be more precise otherWise it will not know what it that method that we are passing in.
+		those methods are:
+		->boolean add(E e)
+		->boolean addAll(Collection<? extends E>c)
+		->boolean remveAll(Collection<?>c)
+
+
+
+					ArrayList Codes it works the same as LinkedList 
+					-----------------------------------------------
+					import java.util.Scanner;
+					import java.util.List;
+					import java.util.Collection;
+					import java.util.ArrayList;
+					import java.util.LinkedList;
+					import java.util.Set;
+					import java.util.Queue;
+					import java.lang.Iterable;
+					import java.util.Iterator;
+					import java.util.Collections;
+					public class Test{
+						public static void main(String[] args) {
+							/*Collections*/
+							List<String>myList=new ArrayList<>();
+							myList.add("Placideh");
+							myList.add("Gloria");
+							myList.add("Lily");
+							myList.add("Maman");
+							myList.add("Papa");
+							myList.add(5,"Tonton");
+							myList.set(3,"Mom");//this is to update in the List
+							System.out.println(myList.get(3));
+							// System.out.println(myList.remove("Papa"));
+							System.out.println(myList.lastIndexOf("Maman"));
+							System.out.println(myList.indexOf("Gloria"));
+							System.out.println("The size of Mylist is :"+myList.size());
+							// System.out.println(myList);
+
+							/* Let just Iterate throught this List*/
+							Iterator<String> itr=myList.iterator();
+							System.out.println("This will printout My name only:"+itr.next());
+							while (itr.hasNext()) {
+								String str=itr.next();
+								System.out.println(str);
+								if (str.equals("Tonton")) {
+									itr.remove();
+									
+								}
+								
+							System.out.println("After Removing Tonton:"+myList);
+							}
+							myList.clear();
+							System.out.println(myList.isEmpty());
+						}
+					}
+
+
+				PRIORITY QUEUE
+				-------------
+	This DataStructure it also implemens the list interface and more to this is that this queue has other additional methods considered to arrayList and LinkedList it is uses a QUEUE which is FIFO techniques which means the element entered first is the element to be pulled out first.
+	 it has also terms like Front and Rear which means 
+	 that Front: it is the element that is entered first
+	 Rear: it is the element that has entered last;
+
+
+	 this has also another method called peek() which is used to check out the element  which is in the first position namely we call it Front .
+	->poll(): this is used to move out the front element
+	->peek():this is used to show out the front element
+
+	import java.util.Scanner;
+	import java.util.List;
+	import java.util.Collection;
+	import java.util.ArrayList;
+	import java.util.LinkedList;
+	import java.util.Set;
+	import java.util.Queue;
+	import java.lang.Iterable;
+	import java.util.Iterator;
+	import java.util.Collections;
+	import java.util.PriorityQueue;
+
+	public class Test{
+		public static void main(String[] args) {
+			/*Collections*/
+			PriorityQueue<Integer>myList=new PriorityQueue<>();
+			myList.add(12);
+			myList.add(21);
+			myList.add(64);
+			myList.add(20);
+			myList.add(19);
+			myList.add(49);
+			myList.remove(49);
+			System.out.println("Front:"+myList.peek());
+			System.out.println("Pull out The Head:"+myList.poll());
+			System.out.println("Size Of Our Queue:"+myList.size());
+			for (int nums :myList ) {
+				System.out.println(nums);
+				
+			}
+			
+		}
+	}
+
+	NOTICE: TO USE THIS CLASS WE HAVE TO IMPORT SO THAT WE GET TO USE IT
+
+	WE CAN ALSO USE A QUEUE CLASS ON LINKEDLIST also PriorityQue is possibe
+	import java.util.Scanner;
+	import java.util.List;
+	import java.util.Collection;
+	import java.util.ArrayList;
+	import java.util.LinkedList;
+	import java.util.Set;
+	import java.util.Queue;
+	import java.lang.Iterable;
+	import java.util.Iterator;
+	import java.util.Collections;
+	import java.util.PriorityQueue;
+
+	public class Test{
+		public static void main(String[] args) {
+			/*Collections*/
+			Queue<Integer>myList=new LinkedList<>();
+			myList.add(12);
+			myList.add(21);
+			myList.add(64);
+			myList.add(20);
+			myList.add(19);
+			myList.add(49);
+			myList.remove(49);
+			System.out.println("Front:"+myList.peek());
+			System.out.println("Pull out The Head:"+myList.poll());
+			System.out.println("Size Of Our Queue:"+myList.size());
+			for (int nums :myList ) {
+				System.out.println(nums);
+				
+			}
+			
+		}
+	}
+
+
+						SET 
+						----
+	This is an interface that extends Collection Interface and it is know that 
+	it does not take two variables and it has some classes that Implements 
+	those classes are : HashSet ,LinkedHashSet,TreeSet
+
+	But the Difference that associate the set is that it never accept duplicate because of it never use index rather it uses hashCode and also Set it is an ordered order it never print out elements as it is insert it prinsout randomly.
+
+	those three classes has methods that makes easier to operate with them
+	->add(): this is for adding an element 
+	and other methods it is just like for the list I am not going to list 
+	them again.
+
+
+
+					Implementation of HashSet
+					-------------------------
+					import java.util.Scanner;
+					import java.util.List;
+					import java.util.Collection;
+					import java.util.ArrayList;
+					import java.util.LinkedList;
+					import java.util.Set;
+					import java.util.Queue;
+					import java.lang.Iterable;
+					import java.util.Iterator;
+					import java.util.Collections;
+					import java.util.PriorityQueue;
+					import java.util.HashSet;
+
+					public class Test{
+						public static void main(String[] args) {
+							/*Collections*/
+							Set<Integer>myList=new HashSet<>();
+							myList.add(12);
+							myList.add(21);
+							myList.add(64);
+							myList.add(64);
+							myList.add(20);
+							myList.add(19);
+							myList.add(20);
+							myList.add(49);
+							
+							System.out.println("Size Of Our Queue:"+myList.size());
+							for (int nums :myList ) {
+								System.out.println(nums);
+								
+							}
+							
+						}
+					}
+
+				LinkedHashSet
+				===========
+		this type will implement Set interface plus that it is going to add up
+		some feature of using Linking and also will be having the head and tail
+		as it is in linkedList
+		its methods is just the same as what we have listed.
+		import java.util.Scanner;
+		import java.util.List;
+		import java.util.Collection;
+		import java.util.ArrayList;
+		import java.util.LinkedList;
+		import java.util.Set;
+		import java.util.Queue;
+		import java.lang.Iterable;
+		import java.util.Iterator;
+		import java.util.Collections;
+		import java.util.PriorityQueue;
+		import java.util.HashSet;
+		import java.util.TreeSet;
+		import java.util.LinkedHashSet;
+
+		public class Test{
+			public static void main(String[] args) {
+				/*Collections*/
+				Set<Integer>myList=new LinkedHashSet<>();
+				for (int i=10;i>0 ;i-- ) {
+					myList.add(i);
+					
+				}
+				
+				
+				
+				System.out.println("Size Of Our Queue:"+myList.size());
+				for (int nums :myList ) {
+					System.out.println(nums);
+					
+				}
+				
+			}
+		}
+
+			TreeSet
+			--------
+			this type which implements Set interface it has a cool feature that it is able to put items on order which is ascending order and also it is able to orient on alphabetical order.
+			also they all has most of the same methods with other classes;
+
+			import java.util.Scanner;
+			import java.util.List;
+			import java.util.Collection;
+			import java.util.ArrayList;
+			import java.util.LinkedList;
+			import java.util.Set;
+			import java.util.Queue;
+			import java.lang.Iterable;
+			import java.util.Iterator;
+			import java.util.Collections;
+			import java.util.PriorityQueue;
+			import java.util.HashSet;
+			import java.util.TreeSet;
+
+			public class Test{
+				public static void main(String[] args) {
+					/*Collections*/
+					TreeSet<Integer>myList=new TreeSet<>();
+					for (int i=10;i>0 ;i-- ) {
+						myList.add(i);
+						
+					}
+					
+					
+					
+					System.out.println("Size Of Our Queue:"+myList.size());
+					for (int nums :myList ) {
+						System.out.println(nums);
+						
+					}
+					
+				}
+			}
+			import java.util.Scanner;
+			import java.util.List;
+			import java.util.Collection;
+			import java.util.ArrayList;
+			import java.util.LinkedList;
+			import java.util.Set;
+			import java.util.Queue;
+			import java.lang.Iterable;
+			import java.util.Iterator;
+			import java.util.Collections;
+			import java.util.PriorityQueue;
+			import java.util.HashSet;
+			import java.util.TreeSet;
+			import java.util.LinkedHashSet;
+
+			public class Test{
+				public static void main(String[] args) {
+					/*Collections*/
+					Set<String>myList=new TreeSet<>();
+					myList.add("zoubeda");
+					myList.add("Celine");
+					myList.add("Nasilla");
+					myList.add("Annais");
+					
+					
+					
+					System.out.println("Size Of Our Queue:"+myList.size());
+					for (String nums :myList ) {
+						System.out.println(nums);
+						
+					}
+					
+				}
+			}
+		

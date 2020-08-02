@@ -1,0 +1,197 @@
+											Java Collections and Generics
+											=============================
+	Java collection and Generics are The most Import concept to learn in such they help the work easier so they are the interfaces and they have some methods includes with them so being able to work with java collections and Generics that's
+	wraps up the Core Java.
+									what is collection
+									------------------
+	collection is used in several means way 
+	1. a compilation  or group of things 
+	2.java collection frameWork: it is a libray of different interfaces classes
+	3.DataStructure: think this as a container that can hold a group of objects   like an array forinstance.
+	4.java.util.Collection Interface
+	5.java.util.Collections: this is a utility class that will help to operate on java collection
+
+
+				what is it java collections Framwork?
+
+	from a high level perspective is a  toolbox of generic  interfaces  and classes
+		-> this toolbox contains various collection interfaces  and classes
+		-> collection related  utility interfaces  classes
+
+		 					Collections Interface  and Class  Hierarchy
+		 					--------------------------------------------
+
+		 			<<interface Collections>>					<<interface Map>>
+
+
+		 -> unlike array all Collection can grow and Shrink in sizes
+		 a collection can hold a set of group of objects
+
+		 Map-> this can hold a peer of objects that have some kind of relation which tights them together named key, value
+		 		-> value: does not have a specific position in this map but can be retrieved with the key it is related to.
+
+
+
+
+		 									Collection Interface
+		 									===================
+		 	this collection interfaces extends some interface and implements some classes 
+
+		 	collection interfaces sit on top of sub-interfaces 
+		 	-> collection interfaces is extended by interface :Set,List,Queue
+
+
+		 	Set: is defined  as a group of unique objects
+		 		-> a unique is defined by equals method of the object type . which means a set can not hold two equal objects
+
+		 	List: is definde as a sequence of objects,unlike a set, a list can contain duplicate entries besides a list keeps its elements  in the order they well inserted into the list
+
+		 	Queue: has two sides Entry are added to the end and remove from the top
+
+
+		 	Interfaces and classes that implements Set Interfaces
+		 	-------------------------------------------------------
+		 	->HashSet & Linked HashSet & TreeSet : they all implementing set interface 
+		 	HashSet: it is a default implementation that is used in majority of cases
+
+		 	LinkedHashSet: it is like a mixed HashSet and list as it does not allow duplicate Entry,but it return its elements in order as how it was inserted like list would do.
+
+		 	TreeSet:Will consently keep all its elements in a sorted order
+
+		 	->SortedSet&NavigableSet: they all extends Set interfaces
+
+		 	SortSet:as the name implies sortedSet is a Set that is consently sorted
+
+		 	NavigableSet:this interface it allows to  navigate through a sorted list.
+		 	forexample : it provide a method to retrieve the next element greater or smaller than a given element of the set
+
+
+
+		 	Classes That Implements  List Interface
+		 ------------------------------------------
+		 ->ArrayList& Vector&  LinkdeList
+
+		 ArrayList:it is the default implemention of the list interface, like any list implementation it does allow duplicate elements,and it does allow to iterate a list in the order of insertion,as it is based on array it is very fast to iterate and read from an array  but adding or removing element at random position is very slow
+
+		 Vector:this existed during jdk 1.it is subOptimal so not required to be used
+
+		 LinkedList:as its name implies its implementation is based on linkedList which makes easy to add or remove elements at any position in the list 
+
+
+		 Classes That Implements Queue Interface
+		 ---------------------------------------
+		 -> LinkedList& PriorityQueue
+		 LinkdeList: we have already talked about it into list , it works just the same, however the fact that make them double linked list it is easy to implement the queue interface. this is the default queue interface
+
+		 PriorityQueue: it a queue implementation that keeps its elements automatically ordered  it has similar functionality like a tree set but it does allow duplicate Entry
+
+
+
+
+
+		 							MAP INTERFACE
+		 							============
+
+
+
+		this Interface has no relation to Collection Interface. a collection operates on one Entity while a Map operates 
+		on two Entities(a unique key ,Object that is related to this key)
+		-> With the help of the key You can retrieve objects it relates to.
+
+
+		Classes that Implements Map Interface
+		-------------------------------------
+		->HashTable &HashMap& LinkedHashMap & TreeMap
+
+		HashTable:class HashTable was the first collection in java jdk1 that was based on dataStructure HashTable,this like vector the class is duplicated and create sub-optimal perfomance so don't use it.
+
+		HashMap:this is the default implementation ,that should be used in majority of cases , a map does not usually does not make guarantees  on how  internally store its elements, exception to this is linkedHashMap
+
+		LinkedHashMap:it allows to iterate a map in order of insertion
+
+		TreeMap: is a sorting map
+
+		intefaces that Extends Map interface
+		-----------------------------------
+		->SortedMap& NavigableMap
+
+		SortedMap:it defines a contract of  a sorted map
+		NavigableMap:it extends SortedMap interface and its method to navigate to the map, this allow to retrieve all entry
+		smaller or bigger than a given entry
+
+
+
+
+										GENERICS
+										========
+		This a topic atleast big as Java Collection Framework
+		List<String> myList=new ArrayList<>(100); 
+
+		so using this Angle bracket this what  makes container   typeSafe
+
+		to use the Interface list help to make the code more  flexible.
+
+		When you use List instead of ArrayList as the type of a Variable you could later 
+		replace the instantiation of ArrayList by LinkedList
+
+		in case You don't need this specific method of List you could also use Collection interface
+
+		Collection<String> myList=new ArrayList(100);
+
+			always use the List Interface for the reference Variable.
+
+
+			collection class can grow dynamically and shrink in size
+			However all arrayList and hashTable are internally operating with the arrays
+
+			Map<VIN,Car> myMap=new HashMap<VIN,Car>(100);
+
+
+
+					UTILITY  INTERFACES
+					===================
+		java.util.Iterator;-> this like objects that act like remote control to iterate through a collection
+		java.lang.Iterable;
+		java.lang.camparable;
+		java.util.camparator;
+
+						java.util.Iterator methods
+						------------------
+				1.boolean  hasNext();-> this return true if the collection has more elements
+				2.E next();->this returns next element in iteration
+				3.void remove();-> remove the last element returned by its iterator from underlying collection
+
+
+
+						java.lang.Iteratable methods
+						----------------------------
+				1.Iterator<T> iterator()-> this will return an iterator 	
+						java.lang.Comparable methods
+						----------------------------
+				1.int compareTo(T o)->
+
+
+
+
+
+				METHODS  OF JAVA.UTIL.COLLECTION
+				--------------------------------
+				boolean add(E e)
+				boolean addAll(Collection<? extends E>c)
+				boolean remveAll(Collection<?>c)
+
+				this methods does not apply on arrayList but all interfaces implements collection interface
+
+				METHODS OF JAVA.UTIL.LIST
+				-------------------------
+				boolean add(int index,E element)
+				E remove(int index)
+				this methods does not apply only on arrayList but  to all interfaces that implements interface
+				E get (index)->return elements by any given location of the list
+
+				int indexOf(Object o)
+				int lastIndexOf(Object o)
+
+				List<E>subList(int fromIndex,int toIndex)-> this returns a view of the list starting the position that you specified from index and for ending one position you specified before the one  you specied as to index
+				void Sort(Comparator<? super E>c)
+

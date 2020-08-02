@@ -1,0 +1,817 @@
+									JavaScript
+									==========
+
+JavaScript is One of the popular language that is taking the globe, and it is known to be  language that runs inside the browser 
+which means  it works on client side. it is an high-level interpreter language it does not a compile languages everyone who is ready to come into web development has to know javaScript either is a back-end developer he has to know javaScript not much as front-end 
+by he do has to get most of the needed so that's why I am learning javaScript as well as Java but most of the time I do focus on java
+because I am going to be a java developer not a javaScript developer.
+
+		To start to code with javaScript as it is a language of the browser is going to be needing the HTML AND CSS but for this tutorial we going to be focus on javaScript syntax.
+
+												CONSOLE
+												=======
+		we do have a console Log so  that we can log-out everything that we are working on 
+					1.console.log();>> this logs out whatever we passed into it to execute to the browser in the console
+					2.console.error();>> this also helps to print out an error message.
+					3.console.warn();>> this also prints-out a warning message.
+					4.alert();>> this print out the message up to the browser but it block every other thing from running.
+
+												VARIABLES
+												==========
+		
+ 		In javaScript we have 3 ways to declare variables
+ 		we have VAR,LET ,CONST
+ 			VAR-> was used back in days but it claims to be unefficient
+ 			now we are using let and const. because var it is globally scoped 
+ 			which means variable that we assign to var even though it is in the 
+ 			function can also be accessed by other function and we don't want that to happen.
+
+ 			LET ->we use let when we do want to reassign our variables .
+ 			CONST-> it is used if we don't want to reassign again our variables.
+ 			most of the time developers uses const.
+
+ 					let age=30;
+ 					console.log(age);
+ 					console.log(typeof age);
+
+ 					const name='Placide';
+ 					console.log(typeof name);
+
+
+
+
+ 									DATATYPES
+ 									========
+ 									PRIMITIVE DATAYPTES & REFERENCE DATATYPES
+
+ 									PRIMITIVE
+ 									=========
+ 			for the types we have like 6 datatypes
+ 			1.Number
+ 			2.String 
+ 			3.Boolean
+ 			4.Undefined
+ 			5.null
+ 			6.symbol
+
+
+
+ 				const name='Placha';
+ 				const age=12;
+ 				const isCold=true;
+ 				const sex=undefined;
+ 				const weigth=32.5;
+ 				let job;
+ 				const x=null;
+
+
+ 				console.log(typeof name);
+ 				console.log(typeof age);
+ 				console.log(typeof isCold);
+ 				console.log(typeof sex);
+ 				console.log(typeof weigth);
+ 				console.log(typeof job);
+ 				console.log(typeof x);
+
+ 					STRINGS
+ 					======
+ 					1.CONCATENATION
+ 					---------------
+ 		When you want to concatenate you may want to use the plus sign but there is a better way of doing it without wasting more time 
+
+ 		const name='Placideh';
+ 		const age=20;
+ 		console.log(`my name is ${name}and I am ${age} old`);//this is called template literal 
+
+ 		we can also take that message to a variable
+ 		const nameAge=(`my name is ${name}and I am ${age} old`);//this way wiht brackets
+ 		const nameAge=`my name is ${name}and I am ${age} old`;// without brackets
+
+ 		console.log(nameAge);
+
+ 		2.	LENGTH
+ 		>> const string='Hello World';
+ 		const string ='hello Good persons'
+ 		console.log(string.length);
+
+ 		3. TOUPPERCASE()
+ 		>> string.toUpperCase();
+		console.log(string.toUpperCase());
+
+		4.TOLOWERCASE()
+		>> string.toLowerCase();
+
+		5.SUBSTRING
+		>>string.substring(0,3);
+		console.log(string.substring(0,3));
+
+
+		6.SPLIT 
+		>>string.split();
+		console.log(string.split(' '));
+		this what it does it our string is separated by space we got put space inside our split method if it is a comma separated that what we are going to pass inside split method.
+
+		>>console.log(string.split(''))
+		this will split by letter but if you want to plit by word you got to do 
+		like the above way.
+
+
+
+				ARRAYS
+				=======
+				are variable that holds many sequence of values or multiple values.
+				in javaScript we can multiple datatypes within the same array
+
+				const array=['oranges','grapes','pawpaw',12,34.3,true];
+
+				//adding to the end we can use index way 
+				like array[7]='yoh';
+				or we can use the push method which is more effective in the in the time that we don't know how far our array size is .
+				array.push('yoh');
+
+
+				like wise to remove from last we can use a pop method
+				array.pop();
+				this will pop out the last element.
+
+				//adding to the biginning we use unshift() method
+
+				array.unshift('papaye');
+
+				//checking if something is an array 
+				console.log(Array.isArray(array));
+				here we pass into int an array name and it will return a 
+				boolean value.
+
+
+				//getting and indexOf() certain element in the array
+				console.log(array.indexOf('pawpaw'));
+				this will return the index of that element.
+
+
+
+						OBJECT LITERALS
+						---------------
+
+		this is like a key value pairs and One of the great thing about javaScript is that we can imbed into single object into many objects
+		like arrays, and other objects 
+
+				//OBJECT LITERALS
+				const person={
+					name:'Placideh',
+					age:20,
+					location:'Nyakabanda',
+					sex:'M',
+					isSingle:true,
+					hobbies:['coding','playing guitar','playing piano','travel world'],
+					family:{
+						familyName:'Hakizimana',
+						siblings:2,
+
+
+					}
+				}
+				console.log(person);
+				// login out the hobbies array.
+
+				console.log(person.hobbies)
+
+				//if we want to get the first index in hobbies array
+				console.log(person.hobbies[1]);
+
+				//to log out into object family
+				console.log(person.family.familyName);
+
+				// this is about how to pull out some specific property from the object
+				//destructuring some properties.
+				const {name,residence,family:{siblings}} = person;/*this is refers as destructuring we 
+				are pooling out the name and location not assigning*/
+				console.log(name);
+				console.log(residence);
+				console.log(siblings);
+				// console.log(location);
+
+				destructuring is kind of Advanced and is a part of Es6 
+
+				//WE CAN ALSO ADD PROPERTIES
+				person.email='h.uwizeyeplacide@gmail.com';
+				console.log(person);
+
+				//ARRAYS OF OBJECTS
+				const todos=[
+					{
+						id:1,
+						text:'Taking out the trash',
+						isCompleted:true
+					},
+					{
+						id:2,
+						text:'Meeting the boss',
+						isCompleted:true
+					},
+					{
+						id:1,
+						text:'Dentis appt',
+						isCompleted:true
+					}
+
+
+				];
+				console.log(todos[1].text);
+
+						JSON FORMAT
+						===========
+	With working with json it is just like object literals on array of object 
+	the only difference is that on json we have double quotes on both the prototype and its values.
+	const todos=[
+		{
+			id:1,
+			text:'Taking out the trash',
+			isCompleted:true
+		},
+		{
+			id:2,
+			text:'Meeting the boss',
+			isCompleted:true
+		},
+		{
+			id:1,
+			text:'Dentis appt',
+			isCompleted:true
+		}
+
+
+	];
+	console.log(todos[1].text);
+	//this how we apply to JSON and most of the time is used when we want to send the that to the server.
+	const todo=JSON.stringify(todos);
+	console.log(todo);
+
+
+					FOR LOOPS
+					=========
+
+					for(let i=0;i<10;i++){
+						console.log(`for Loop Number:${i}`);
+					}
+					const todos=[
+								{
+									id:1,
+									text:'Taking out the trash',
+									isCompleted:true
+								},
+								{
+									id:2,
+									text:'Meeting the boss',
+									isCompleted:true
+								},
+								{
+									id:1,
+									text:'Dentis appt',
+									isCompleted:true
+								}
+
+
+							];
+
+					//FOR  LOOP
+					for(let i=0;i<todos.length;i++){
+
+					console.log(todos[i]);
+					}
+					printing out all the elements in the array objects.
+
+					WHILE LOOP
+					==========
+					let i=0;
+					while(i<10){
+					console.log(`While loop Number:${i}`);
+					i++;
+					}
+
+					FOR OF LOOP
+					=============
+					for(let x of todos){
+					console.log(x);
+					}
+					this work just like for each loop in java.	
+
+					const todos=[
+								{
+									id:1,
+									text:'Taking out the trash',
+									isCompleted:true
+								},
+								{
+									id:2,
+									text:'Meeting the boss',
+									isCompleted:true
+								},
+								{
+									id:1,
+									text:'Dentis appt',
+									isCompleted:true
+								}
+
+
+							];
+
+					//FOR  Of  LOOP
+					for(let todo of todos){
+
+					console.log(todo);
+					console.log(todo.text)/* this will print out the text which is kind newer version than spending time implementing the for loop by adding the i variable here we simply print out
+					basingly on what variable we want*/
+					}
+
+
+
+
+					const todos=[
+								{
+									id:1,
+									text:'Taking out the trash',
+									isCompleted:true
+								},
+								{
+									id:2,
+									text:'Meeting the boss',
+									isCompleted:true
+								},
+								{
+									id:1,
+									text:'Dentis appt',
+									isCompleted:false
+								}
+
+
+							];
+
+					//FOR  Of  LOOP
+					/*for(let todo of todos){
+
+					// console.log(todo);
+					console.log(todo.text);
+					}*/
+
+
+					// HIGH ORDER ARRAY LIST.
+================================================================================
+
+
+					//ForEach ,map,filter.
+					/*
+						Foreach ->it just loops throught the array
+						map->it allows to create new array from an array
+						filter-> it allows to create a new array based on the condition
+
+					*/
+					// /*1.FOREACH*/
+					// todos.forEach(function(todo){
+					// 	console.log(todo);
+					// 	console.log(todo.text);
+					// })
+					/* this type of high order array this takes whatever 
+					the array is and then apply to it the forEach method and
+					then after that we pass into that forEach a function and 
+					that function takes a parameter that act a variable that 
+					will be used to loop through it.*/
+
+					/*MAP*/
+					const todoText=todos.map(function(todo) {
+						return todo.text;
+					})
+						console.log(todoText);
+					/* this return a new array which is just regural and 
+					this the main reason why we need to use map because 
+					it helps taking out from the other array and create a new
+					other that can be used.*/
+
+					/*FILTER*/
+					const todoCompleted=todos.filter(function(todo){
+						return todo.isCompleted===true;
+					})
+					console.log(todoCompleted);
+					/*This what it does is that it print a newer array that we want  from the
+					existing array but by applying to it some conditions*/
+
+					/*CHAINNING THE METHODS FOR HIGHER ORDER ARRAY*/
+					/* we do want to chain on filter method and instead of 
+					output all the values we do want to get only the text that
+					ofcourse setted to be true on filter and we map it 
+					so that it will come as the new array of text that is true*/
+					
+					/*
+							ARROW FUNCTION IN ITERATING ON HIGH ORDER LOOP
+							todos.forEach(todo=>console.log(todo));
+							
+							/*IF WE WANT TO USE THE RETURN WE SHOULD ADD THIS CURY BRACES*/
+							const sum=num=>{return num*num} 
+							console.log(sum(4));
+					*/
+					const todoCompletedText=todos.filter(function(todo){
+						return todo.isCompleted===true;
+					}).map(function(todo){
+						return todo.text;
+					})
+					console.log(todoCompletedText);
+					/* basically all this it is like function programming there is 
+					more alot to this and this kind work pretty much better 
+					because it has to more freedom compared to Java language 
+					that I am also dealing with*/
+					//array which has inside the Objects
+					const todos=[
+						{	
+							id:1,
+							text:'taking out trash',
+							isCompleted:true
+						},
+						{	
+							id:2,
+							text:'Meeting the Boss',
+							isCompleted:true
+						},
+						{	
+							id:1,
+							text:'Having an apt with dentist',
+							isCompleted:false
+						}
+					];
+					console.log('This is About JSON');
+					console.log('==================');
+					console.log(todos);
+					//trying to log Metting with the boss
+					console.log(todos[1].text);
+
+					//using Json when we want to send to an API
+					// by grabing with our todos array
+					const todoJson=JSON.stringify(todos);
+					console.log(todoJson);
+					/*the things with using json everyThing is in 
+					double quotes and it is How we send data to a Server*/
+
+					//printing out an array that has some objects inside.
+					for(let i=0;i<todos.length;i++){
+						console.log(todos[i].text);
+					}
+
+
+					//forOfLoop
+					/*When observe well it kind work like  for-each loop in java
+					the only difference is because instead of using colon
+					we are using of*/
+					console.log('this is for forOfLoop');
+					console.log('=====================');
+					for(let todo of todos){
+						console.log(todo);
+					}
+					// when you want to access the text we just
+					// use dot instead of using the index i
+					for(let todo of todos){
+						console.log(todo.text);
+					}
+
+
+					//advanced Arrays
+					//there is one called High order Array Method
+					//we have, forEach,map,filter
+					//1.forEach
+
+					console.log('This is for Advanced using ForEachArray');
+					console.log('==========================');
+					todos.forEach(function(todo){
+						console.log(todo.text);
+					});
+					console.log('This is for Advanced using Map Array');
+					console.log('==========================');
+					//this return an Array
+
+						const todoText=todos.map(function(todo){
+							return todo.text;
+
+						});
+						console.log(todoText);
+
+						console.log('This for Advanced Using Filter');
+						console.log('===============================');
+						const todoisCompleted=todos.filter(function(todo){
+
+							return todo.isCompleted===true;
+						});
+						console.log(todoisCompleted);
+
+================================================================================
+					
+						CONDITIONALS
+						============
+		/*CONDITIONALS
+		==============*/
+		/*IF STATEMENT*/
+		const num='10';
+		if (num==10) /* this double equal does not take an interest on acknowledging the
+			datatype which is bad*/{
+			console.log('is equal');
+		}
+		else{
+			console.log('not equal');
+		}
+		/*  there is  a big difference in using equal operator 
+		in javaScript by the time we want to use two equal sign 
+		javaScript will not notice the datatype and it will continuously 
+		print true and hence it is not that's why for the equality we do use
+		triple equality operators*/
+		const nums='10';/*like this if we turn to string it will print out that
+		they are not equal but coming up to double equal sign it may print that 
+		it is equal*/
+		if (nums===10) {
+			console.log('is equal');
+		}
+		else{
+			console.log('not equal');
+		}
+		/*ELSE IF */
+		const numb=20
+		if (numb===10) {
+			console.log('is equal');
+		}else if(numb>10){
+			console.log('Numb is greater than 10');
+		}
+		else{
+			console.log('Numb is less than 10 ');
+		}
+
+		/*TENARY OPERATOR*/
+				const x=10;
+
+				const color=x>10? 'red':'Black';
+				console.log(color);
+
+		/*SWITCH STATEMENT*/
+				const x=10;
+
+				const color=x>10? 'red':'Black';
+				switch(color){
+					case 'red':
+						console.log('the color is red');
+						break;
+					case 'Black':
+						console.log('the color is black');
+						break;
+					default:
+						console.log('no color selected');
+						break;
+				}
+================================================================================
+							FUNCTIONS
+							---------
+
+	// function addNums(num1,num2){
+	// 	console.log(`Sum of ${num1} and ${num2} is ${num1+num2}`);
+	// }
+	// addNums(4,5);
+	/* Most of the time we don't want to log inside the method
+	so we just want to return and log the whole function*/
+	function addNums(num1,num2){
+		return `Sum of ${num1} and ${num2} is ${num1+num2}`;
+	}
+	console.log(addNums(5,5));
+	//arrow function
+	const sum=(num1,num2)=> console.log(num1+num2);
+	sum(3,4)
+	on arrow function you don't need to use function keyword
+================================================================================
+							OOP
+							---
+
+
+
+	/* here in javaScript there is actualy to way of definning 
+	OOP the one which is easier for me is using constructor and 
+	it si what I will be doing but there is also another way through 
+	which there is a use of method only.*/
+
+	function Person(firstName,lastName,dob){
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.dob=new Date(dob);
+		this.getBirthDate=function (){
+			return this.dob.getFullYear();
+		}
+
+	} 
+	//instantiation
+	const person1=new Person('Placideh','Hakiz','11-16-1999');
+	// console.log(person1);
+	console.log(person1.getBirthDate());
+
+	THIS ONE WILL  WORK BUT BY THE TIME OF OUTPUT WE WILL GET ANOTHER OBJECT 
+	WHICH IS PROTO AND WE DON'T WANT THAT OUR FUNCTION BEING INCLUDED INSIDE THE
+	OBJECT SO IT IS BETTER TO USE PROTOTYPE
+
+
+				PROTOTYPE
+				--------
+
+		function Person(firstName,lastName,dob){
+			this.firstName=firstName;
+			this.lastName=lastName;
+			this.dob=new Date(dob);
+			
+			
+
+		} 
+		Person.prototype.getBirthDate=function(){
+				return this.dob.getFullYear();
+
+		}
+		Person.prototype.getFullName=function(){
+				return `${this.firstName} ${this.lastName}`;
+
+		}
+		//instantiation
+		const person1=new Person('Placideh','Hakiz','11-16-1999');
+		console.log(person1);
+		// console.log(person1.getBirthDate());
+		// console.log(person1.getFullName());
+
+		incase of declaring the methods inside the Object we define them outside
+		the Object and we add that keyWord of prototype.
+
+
+					Class in Es6(Ecmascript 2015)
+					------------------------------
+
+
+	/*USING CLASS IN JAVASCRIPT */
+	class Person{
+		constructor(firstName,lastName,dob){
+			this.firstName=firstName;
+			this.lastName=lastName;
+			this.dob=new Date(dob);
+		}
+		getFullName(){
+				return `${this.firstName} ${this.lastName}`;
+
+		}
+		getBirthDate(){
+				return this.dob.getFullYear();
+
+		}
+	}
+	//instantiation
+		const person1=new Person('Placideh','Hakiz','11-16-1999');
+		console.log(person1);
+		// console.log(person1.getBirthDate());
+		// console.log(person1.getFullName());
+
+
+		WOW THIS IS THE AWESOME FEATURES THAT WAS ADDED IN JAVASCRIPT SO THAT
+		 TO HELP ALL PEOPLE THAT ARE COMING FROM OTHER PROGRAMMING LANGUAGE AND 
+		 IT REALLY WORKS WELL TO GET USING JAVASCRIPT AND NOW I AM KIND LOVING
+		 JAVASCRIPT TOO BECAUSE IT HAS MORE FREEDOM . AND BY USING CLASS WE DON'T EVEN TO USE THE PROTOTYPE WHICH WAS HAND USING.
+
+ ============================================================================
+ 			DOM(Document Object Module)
+ 			--------------------------
+ 			//single elements selectors
+ 			console.log(document.getElementById('my-form'));/*document method from the window*/
+
+ 			console.log(document.querySelector('.container'));/*queryy selector 
+ 			this is pretty much work like getElementById but it is newer
+ 			and it is a single element selector*/
+
+ 			//multiple elements selectors
+ 			// console.log(document.querySelectorAll('.item'));
+ 			console.log(document.getElementsByClassName('item'));/*this is the older version 
+ 			it is not recommend it better to use querySelectorAll*/
+ 			console.log(document.getElementsByTagName('li'));
+
+
+ 			const items=document.querySelectorAll('.item');
+ 			items.forEach((item)=> console.log(item));
+
+
+ 				Manipulating the Dom or Changing the DOM
+ 				----------------------------------------
+
+ 		/*MANIPULATING THE DOM*/
+ 		const ul=document.querySelector('.items');
+ 		// ul.remove();/*this helps to remove the ul*/
+ 		/*to remove last item*/
+ 		// ul.lastElementChild.remove();
+ 		ul.firstElementChild.textContent='Hello';/*this will change the text
+ 		which was item and turns to Hello*/
+ 		ul.children[1].innerText='Placideh';/* by using querySelectorAll
+ 		the elements comes as NodeList which like pretty the same as Array*/
+ 		ul.lastElementChild.innerHTML='<h1>HelloWord</h1>';
+
+
+ 		const btn=document.querySelector('.btn');
+ 		btn.style.background='red';
+
+
+		 					EVENTS
+		 					=======
+		 			/*Events*/
+
+		 	const btn=document.querySelector('.btn');
+		 	btn.addEventListener('click',(e)=>{/*we can also have mouseover or mouseOut
+		 		to where we type click we can also have that too!*/
+		 		e.preventDefault();
+		 		 // console.log('click');
+		 		 // console.log(e.target.className);
+		 		 document.querySelector('#my-form').style.background='#ccc';
+		 		 document.querySelector('body').classList.add('.bg-dark');
+		 		 document.querySelector('.items').lastElementChild.innerHTML='	<h1>Hello</h1>'
+		 	});
+
+
+		 				/*ADDING SOME FUNCTIONALITY*/
+		 			const myForm=document.querySelector('#my-form');
+		 			const nameInput=document.querySelector('#name');
+		 			const emailInput=document.querySelector('#email');
+		 			const msg=document.querySelector('.msg');
+		 			const userList=document.querySelector('#users');
+
+
+		 			myForm.addEventListener('submit',onSubmit);
+		 			function onSubmit(e) {
+
+		 				e.preventDefault();
+		 				// console.log(nameInput.value);
+		 				if (nameInput.value===''|| emailInput.value==='') {
+		 					msg.classList.add('error');
+		 					// alert('Please Enter fields');instead of using alert we can use
+		 					msg.innerHTML='Please Enter all fields';
+		 					setTimeout(()=>msg.remove(),3000)
+		 				}
+		 				else{
+		 					console.log('success');
+
+		 					const li=document.createElement('li');
+		 					li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`))
+		 					userList.appendChild(li);
+
+		 					//clear the fields
+		 					nameInput.value='';
+		 					emailInput.value='';
+
+		 				}
+		 			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const person={
+		
+		hobbies:['Coding','Playing Musical Instruments','Travelling'],
+		programming:(name,age)=>{
+			console.log(`My name is ${name} and I am ${age} Old`)
+			console.log('Programming is Just Fun and I love it.');
+		}
+		//this is arrow function and I do know how to use it and the rest is about knowing well how to manipulate 
+		//with the dom because after knowing that then I will be good to start and work on my projects
+		//and I do believe that after all I will go to Kim and show him how far I have come with using 
+		//javaScript and also I will go to Nelson to show him how far I have come with working with
+		//java so both of them they all in the industry so after showing them where I am then I will
+		//want to understand their feedback on Me.
+
+
+};
+ 
+ // person.programming('Placideh',20);
+
+ function Person1(name,age){
+ 	this.name=name;
+ 	this.age=age;
+ 	this.coding=(name,age)=> console.log(`Hello my name is ${name} and I am ${age} I love programming!`)
+ }
+ const human1= new Person1('Hakiz',20);
+ human1.coding('Uwizeye',20)
+ console.log(human1);
+
+ class Person{
+ 	constructor(name,age){
+ 		this.name=name;
+ 		this.age=age;
+ 	}
+ 	coding(name,age){
+ 		return 'Name:${name} Age:${age}';
+ 	}
+ }
+ const human= new Person('Placideh',20);
+
+ console.log(human);
+!

@@ -1,0 +1,31 @@
+										Java OOP
+										========
+
+
+This is My new Snippets of Object Oriented Programming which is crucial in Java Without knowing how to use Objects You can't even be able to build any application using java langauge because it is an object oriented language.
+
+				PILLARS OF OOP
+				--------------
+				1.ENCAPSULATION
+				2.ABSTRACTION
+				3.INHERITANCE
+				4.POLYMORPHISM
+
+so with that pillar it is where all the Information and terms includes.
+for example they are some terms which are like:Access modifier,overloading,overriding,try catch,extends ,implements ,interface super,constructors,methods,instance variable ....
+
+Talking about OOPs we focus on that 4 pillars which are essential and that's what it is OOP but knowing them and how to use them in solving your problem it is  a skill that needs to be learned well. because missing one of them it destroy you in coming projects.
+
+
+CLASS ,OBJECTS are the main things that we mainly focusing on most of the time becuase without classes and objects there is no OOP that's it . the main reason we do have the Objects
+programming language it is a great way to take whatever it is in the world and try to implement it in  a way such that we can use them also in a digital way.
+
+		
+
+
+
+CLASS: it is a blueprint to which an object is created.
+Object: it is an instance of a class through which methods and instance variable are implemented.
+ENCAPSULATION:This term is used in OOPs as a way of hiding data to which it can not be accessed by other classes.
+ABSTRACTION: this also kind work like encapsulation but the only difference is that it create methods that can be used in a class it more crucial also and it is used most of the time .
+3.INHERITANCE

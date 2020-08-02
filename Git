@@ -1,0 +1,178 @@
+Git is a version control system for control changes in computer files. so we can use it  for many things it is just for storing 
+files whether it is HTML,CSS ,JAVA ,JAVASCRIPT, ANY language it is just for storing your files whether locally or remote.
+
+Git is a distributed version control :and  it is the platform to where many developers can share the work without being at the same
+Network Again there is also some version control system that requires to be on the same network but git is not like that it is distributed.
+
+>> Git tracks every single changes that made on  the system or in the project and you can also revert back at  any time that you want as long as it was committed to the repository
+
+>> you don't need an internet connection to work on local repository but if you want to push it to the remote repository that when you are going to need an internet connection.
+
+					CONCEPTS OF GIT
+					--------------
+	*keeps track of code history
+	* takes "snapshots" of your files
+	*You decide  when  to take  a snapshot by  making a "commit"
+	*You can visit  any snaapshot at anytime
+	*You can stage files before committing.
+
+
+>> your code is extremely safe when you are working with git.
+
+						BASICS COMMANDS 
+						---------------
+	>>git init -> will initialize git repository by going into your CLI and create folder if you set git init folder/file name that will be marked as git(once you have alread initialize that forlder or file you can start to run other commmands).
+
+	>>git add <file> ->this will add file or files that you add to the staging area and then the will be ready to commit
+
+	>>git status  ->this is used to check what we have in the staging area and ready for commit you can just use git status
+	this will show the difference between the working tree and the working area.
+
+	>>git commit   -> When you ready you can then commit your files and that will move files or index which was in the staging area and get into your local repository.
+
+				COMMANDS FOR REMOTE REPO
+				------------------------
+	>>git push  -> this will take the local repository that you have created and push it to the remote repository like github or bitBucket
+
+	>> git pull  -> this is used when you want to pull the latest changes from the remote repository. like if someone makes changes and you want to add that on your code .
+
+	>>git clone  -> will copy your remote repository into your current folder.
+
+
+
+	so once you have created the folder you will be needing to be in that folder on the terminal and then type of git init
+	so that time your folder will be having a git extension.
+
+	Now One thing todo before Starting anything you have to add your username and email address to git
+
+	>>git config --global user.name 'Placideh' 
+	>> git config --global user.email 'h.uwizeyeplacide@gmail.com'
+
+	after that you can start to use that git commands.
+	>> git rm --cached <filename> if you want to remove that files from the staging area. after that they will be untracked
+
+
+
+					TIPS AND TRICKS
+					---------------
+
+
+	>>git add *.html -> this will add anything in the folder that contains .html extension to the staging area
+
+	>> git add .   -> this will help to add everything that is in our folder to the staging area.
+
+
+	>>git status   ->this show what is already in staging area and also shows if you made some changes to the files that is already in staging area we the message that there is a modification.
+
+
+	>>git commit   -> after that you have your files in the staging area you do want to put it into the commit so with that we have also to specify adding a message on it 
+		git commit this will take us on another editor so as to add a message but there is also a short way todo
+
+		git commit -m 'type your message here'
+
+	then you will see that files have been commmitted and shows how many files that have changed and gives us the file names
+
+
+	git status   -> it will show that now there is nothing to commit because we have already committed to our repository
+
+
+
+
+
+
+
+						GITIGNORE
+						---------
+	THIS gitignore helps us not to add files which we don't want to  add even if we type add all so it will not add them 
+	to create it we need to create it from the command line or in the editor if we use file system it will not work it may say that 
+	name is empty
+
+		>> .gitignore   -> then write out whatever that you want to include this is usually used when like you are writting your documentation and you don't want that it may appear wherever.
+				for example :
+				after having a gitignore file 
+				may you have a text file that you have created like 
+				log.txt  ==> after that you have added some code or documentation you and you don't want it to be includeed to git 
+
+				just take that file name and add it into gitignore file.
+
+
+				we can also add folder to gitignore to do that we have to type out
+				/foldername with that slash
+
+
+
+
+
+
+
+								BRANCHES
+								========
+
+	Let's you are a developer working with other Developers and you are working on a projects and you are assigned a task of adding a   login and you don't want to start making changing by pushing to the repository and having the main code based  edited and changed without finishing the functionality so what you would is that you can create a branch and name it whatever you want and start working on that instead of changing the main code base (which is called master).
+
+
+			to create the branch 
+			---------------------
+			>>git branch branchname
+
+			so doing that does not change to the branches that you are working on which is the master branch so what you could is just change from master to 
+
+			to switch the branch 
+			>> git checkout branchname
+			so that time you are in a new branch which is different from the master branch so with that then you can start to work into that branch and then after if you want to add that other branch file to the master you can use 
+			a merge command 
+
+
+			the thing is you are able to work on the files that is in the whole folder or files that worked on the master but your changes will not be appeared or edited to the master unless you hit a merge command
+
+			we merge while we are in the master 
+			>> git merge branchname.
+					a  vim editor will pop up asking why we want to add that to master and then you type out the message.
+			  save and continue.
+
+			  sometimes if you are working on your own project sometimes you don't even using branches.	
+
+
+			  				PUSHING TO THE REPOSITORY
+			  				========================
+			  >>git remote   => will show the list of remote repo that we have if we haven't already copy the link
+			  the list will be none.
+			 all you need is just to go to your remote repo and then create the files after you set the description and then after that you want to copy the link that you have from the remote repos and then paste it to your CLI where you are running your files at local repository and then after doing that you will need to type out 
+			 >> git remote
+			  => now we shall get the name of the branch on remote repos
+			   TO MAKE A PUSH WE HAVE TO TYPE OUT 
+			 >> git push -u remoteBranchname master  
+			 	-> this will push to the remote repository sometimes you are going to be asked to add the username and password to confirm the pushing.
+
+
+			 >> to help people understand your files you have to create a read me files
+			 >> touc README.md
+
+			 					README SYNTAX
+			 					============
+			 					# stands for the Heading  
+			 					type into it whatever message that you want to address.
+
+
+
+			 		>> git add .
+			 		>>git commit -m 'your message'
+			 		>> git push
+
+			 		so because we have already added the link to the repository what we should is just 
+			 		type git push and other modification will be added imediately to the remote repository.
+
+
+
+			 		CLONNING FROM REMOTE REPO
+			 		========================
+			 		go to github and click to a button named clone or download and it is going to give you option which are 
+			 		like to download or to use the link and paste that out to your terminal so that you can have a clone of that repository 
+			 		all you need you may want to create a folder where that files should be located 
+			 		>> git clone link 
+			 			that will give you all the codes and start working with them if you want to.
+
+
+			 		if you are working with other developer to check the changes you can hit 
+			 		>> git pull
+			 			it will pop up a message that everything is up to date.

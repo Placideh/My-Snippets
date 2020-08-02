@@ -1,0 +1,73 @@
+ THIS IS THE BASIC COMMAND LINE THAT EVERY DEVELOPER WILL ATLEAST KNOW AND I KNOW THEM TO
+
+
+ 1.cd =>Changing the Directory
+ 2.cd .\Users\Documents => this helps us to append on the existing directory
+ 3.cd .~\docu when you use this tilda and hit tab then you don't need to type out everything manually
+ 4.cd.. => this helps to move out one path on the same directory 
+ 	cd ..\Desktop => this will help to jumps directy to another path 
+ 	cd ~\Desktop => this will jump you directly to anothe directory 
+ 5.mkdir => this command helps to create folder within the commandline
+ 6.touch => this command helps to create a file within commandLine and it is fast
+ 7.rm => this helps to delete any file or folder 
+ 8.rm \.file.txt  => so this is way of deleting a file in some directory 
+ 9.rm \.file.txt -force => so this command is used if you are deleting files and 
+ they tell you that you are not allowed to delete it and hence you want to delete it so you have to append on it --force
+ it will be delete imediately
+
+ 10 .cp=> this type of compand it helps us to copy one file from one place to another
+ 	cp 'pl.txt' C:\Users\placide\Documents\
+ 	cp 'folder' C:\Users\placide\Documents\ = > if there is other files that are in it will not include them unless you add
+ 	other command which id -Recurse -Versbose so the verbose will show us each line that has been copied and even show us 
+ 	the error that might occur
+ 	cp 'folder' C:\Users\placide\Documents\ -recurse -verbose
+
+
+ 11. mv => so this command helps to move or rename the file if they are in the same location and also 
+ move it from one location to this other location
+ 	mv .\plac.txt placide.txt
+ 	mv .\plac.txt C:\Users\placide\Documents\
+
+ 12. ls => so this command is used to list all the item that should be in reside in the given file
+
+	PS C:\Users\placide\Documents> ls C:\Users\placide\Documents\pals\ => this means we can also be able to list other files without changing our path
+
+	PS C:\Users\placide\Documents> ls .\pals => this works pretty the same as above
+	ls -force C:\ => this will show all the hidden files that are in the C:drive
+
+13.pwd => this command will print out the current working directory 
+14.whoami => this will show you the user that you are using 
+15.echo => so this command also helps to output whatever text that you want to display in the console
+	echo 'woof'
+	echo woof> dog.txt => this will insert this word woof into dog.txt
+	echo doggy>> dog.txt => this will append to what is existing in dog.txt
+16.cat => so this command it is used to read some text files inside the command line 
+	cat plc.txt
+	cat Person.java
+	cat Person.java -head 10 => this will give us the first 10 lines of the text instead of showing us everything in the file
+	cat Person.java -Tail 10=> this will give us the last 10 lines of the file
+17.less => this also helps to read somefiles which are are large from the console where you
+can use space to jump up a paragraph and enter key advande one line so you can use it if you want to move slowly to 
+	the file 
+
+		so once you are in you will need to go out and using ctrl C will not help you to move out 
+		unless you use q key  so that how you can quit
+18.select-string cow plc.txt ==> so this command will helps us to find if a word cow is in plc.txt
+
+19. PS C:\Users\placide\Documents> ls C:\Users\placide\Documents\ -recurse -filter *.java => this will helps us to look for files that have .java extension in the documents folder so the -filter parameter will filter out all the matching files
+so adding the recurse will retrieve all the files includes those which are in the folders
+
+20. pipe line sending one command as  the input of another command;
+	PS C:\Users\placide\Documents> cat Person.java | Select-String name
+	so here we want to search from Person.java a word which is name.
+
+	it is also possible to take what you have outputted and puts into another files by using the redirection
+	PS C:\Users\placide\Documents> cat Person.java | Select-String name > placha.txt
+
+
+21. taking out errors in the files instead of putting it into the console
+	PS C:\Users\placide\Documents> ls Person.java 2>error.txt we can do just like this so this number 2 means it is for standard error
+
+
+
+	so this is are the very basic commands that as a developer that we shoud know so that to get alot done.

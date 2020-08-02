@@ -1,0 +1,11 @@
+I never Thought that Powershell is a programming language and 
+here is the code of printing hello Worlds 
+
+
+
+PS C:\Users\placide\Documents> for($i=1;$i-le 10;$i++){Write-Host "hello World"}
+
+PS C:\Users\placide\Documents>
+>> for($i=1;$i -le 10 ;$i++){
+>> write-host "Hello World"
+>> };

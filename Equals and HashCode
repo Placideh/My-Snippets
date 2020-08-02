@@ -1,0 +1,33 @@
+												Equals and HashCode methods
+												---------------------------
+	By using this equal methods and Hashcode most of the time they are used in comparison of Objects not numerics
+	so talking about equals method it has  its contract 
+
+
+												Equals Contract
+												==============
+
+		1.Reflexivity: here an object must be equal to itself.
+		2.Symmetry: This means two object must agree if they are equal of not.
+		3.Transivity:if one object is equal to a second,and the second to a third, the first must be equal to the third
+		4.Consistency:if two objects  are equal  they must remain equal for all time ,unless one of them is changed
+		5.Null returns false: all objects must be unequal to null
+
+
+
+													HashCode
+													==========
+	For Processing similar object are putted into a collection,such collection in java it is like a powerfull array,
+	besides other things it allows you to look up other objects ,not only based on their index position but also based
+	on their specific values.
+
+											HashCode Contract
+											------------------
+
+	1.For any two  objects  return same hashCodes  when equals returns true
+	2.When a hashcode is Invoked  more then once on the  same object, it must consistently return  the same int  values as long as the  object  is not changed
+
+	3.YOU SHOULD OVERWRITE HASHCODE  WHENEVER  YOU OVERWRITE EQUALS
+	4.Aim to return  different hashCodes when equals  returns  false.
+
+	this one is complicated I will learning it after when I get good in Progaramming.

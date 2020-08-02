@@ -1,0 +1,11 @@
+import java.io.Console;
+public class Test{
+
+	public static void main(String[] args) {
+
+		Console console=System.console();
+		String pass=new String(console.readPassword("please Enter Your passWord"));
+		System.out.println("your pass is :"+pass);
+			
+		}
+}
